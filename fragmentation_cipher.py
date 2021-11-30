@@ -6,13 +6,27 @@ class FragmentationCipher:
         print("Help")
 
     def show_info(self):
-        print("Info")
 
+        print("This is a Fragmentation Cipher tool.\n")
+        print("Every message will be divided into equal fragments (substings).\n")
+        print("The number <F> of fragments (substrings) must be a divisor of the message's length.\n")
+        print("Example: 'Hello my dear friend' has a length of 20 and can thus be divided into 1, 2, 4, 5, 10 and 20 Fragments.\n")
+        print("A string of keys must then be inputed for every character in each fragment to be shifted by.\n")
+        print("Example: If 'Hello my dear friend' has been divided into 5 fragments and the key string is '12345',")
+        print("every character in the first fragment will be shifted by 1, every character in the second fragment by 2 and so on.\n")
+        print("'Hello my dear friend' becomes 'Ifmmq oa ghdv jvnjsi' after the encryption process ends.")
+        print("In order for a decryption to be performed, the person decrypting must know the number of fragments and the key string.\n")
+        print("This makes Fragmentation Cipher a bit harder to brute-force than Caesar's Shift")
+        print("as it has 24^k possible encryption combinations (where k is the number of keys which must be a divisor of the length of the message).")
+        print("Since the algorithm uses a string of integers as keys, which means that unlike the Vigenere algorithm,")
+        print("there is no passphrase that can be guessed.")
+        print("The Fragmentation aspect of the algorithm adds another element of difficulty both for encrypting and decrypting messages.\n")
+        
     def cli_interface(self):
         arguments = sys.argv
 
         if len(arguments) != 5:
-            print("error")
+            self.show_info()
         else:
             if arguments[1] == '-e':
                 encoded_message = self.encode(arguments[2], arguments[3], arguments[4])
